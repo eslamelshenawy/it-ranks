@@ -18,7 +18,7 @@ import vmware.services.gateway.service.UserAuthDetailsService;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserAuthDetailsService userAuthDetailsService;
@@ -31,40 +31,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder
 
-                .userDetailsService(userAuthDetailsService)
-                .passwordEncoder(passwordEncoder());
+                .userDetailsService(userAuthDetailsService).passwordEncoder(passwordEncoder());
 
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
-    private static final String[] PUBLIC_PATH = {
-            "/Login/**",
-            "/v3/api-docs/**",
-            "/v2/api-docs/**",
-            "/swagger-ui/**",
-            "/swagger-ui.html"
-    };
+    private static final String[] PUBLIC_PATH = {"/Login/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html"};
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http
-                .cors().and().csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(invalidLoginAttemptHandler)
-                .and()
-                .authorizeRequests()
-                .antMatchers(PUBLIC_PATH)
-                .permitAll()
-                .anyRequest().authenticated();
-         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(invalidLoginAttemptHandler).and().authorizeRequests().antMatchers(PUBLIC_PATH).permitAll().anyRequest().authenticated();
+        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 
