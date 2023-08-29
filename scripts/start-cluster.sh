@@ -5,7 +5,7 @@ set -x
 
 . ./set-env.sh
 
-minikube start -p $CLUSTER1_NAME --memory='3900mb' --cpus=2 --disk-size=20g --vm-driver="docker" --insecure-registry=localhost:5000 --force
+minikube start -p $CLUSTER1_NAME --memory='3900mb' --cpus=2 --disk-size=20g --vm-driver="docker" --insecure-registry=localhost:5000 --force --apiserver-ips=150.230.52.110
 minikube profile $CLUSTER1_NAME
 minikube addons enable ingress
 minikube addons enable metrics-server
