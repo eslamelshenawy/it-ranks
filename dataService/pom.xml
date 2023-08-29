@@ -10,11 +10,11 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>dataService</artifactId>
-    <version>1.1</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>dataService</name>
     <description>shared services orcale</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <spring-cloud.version>2022.0.4</spring-cloud.version>
     </properties>
     <dependencies>
@@ -31,6 +31,7 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>3.1.2</version>
         </dependency>
+        <!-- Oracle database driver -->
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc8</artifactId>
@@ -114,36 +115,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <repositories>
-        <repository>
-            <id>repository.spring.release</id>
-            <name>Spring GA Repository</name>
-            <url>https://repo.spring.io/release</url>
-        </repository>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-        <repository>
-            <snapshots />
-            <id>snapshots</id>
-            <name>libs-snapshot</name>
-            <url>https://repo.spring.io/snapshot</url>
-        </repository>
-        <repository>
-            <id>spring-milestone</id>
-            <name>Spring Maven MILESTONE Repository</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </pluginRepository>
-    </pluginRepositories>
 
     <build>
         <plugins>

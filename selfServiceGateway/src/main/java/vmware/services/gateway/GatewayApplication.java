@@ -14,10 +14,16 @@ import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 import vmware.services.gateway.config.RibbonConfiguration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Configuration
 @SpringBootApplication
@@ -54,5 +60,23 @@ public class GatewayApplication {
 				LOGGER.warn("Failed to lookup instance due to endpoint not specifying port for service {}. Exception: {}" + svc, ex.toString());
 			}
 		}
+
 	}
+
+	@Autowired
+	public Docket swaggerApi() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.select()
+				.apis(RequestHandlerSelectors.any())
+				.paths(PathSelectors.any())
+				.build();
+	}
+
+//	@Bean
+//	MeterRegistryCustomizer meterRegistryCustomizer(MeterRegistry meterRegistry){
+//		return registry -> {
+//			meterRegistry.config()
+//					.commonTags("application", "gateway");
+//		};
+//	}
 }
