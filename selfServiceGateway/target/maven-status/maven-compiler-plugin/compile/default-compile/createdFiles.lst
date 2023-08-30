@@ -2,7 +2,6 @@ vmware/services/gateway/filter/JwtAuthenticationFilter.class
 vmware/services/gateway/config/auth/AuthenticateRequest.class
 vmware/services/gateway/config/auth/JwtAuthenticationResponse.class
 vmware/services/gateway/service/InvalidLoginAttemptHandler.class
-vmware/services/gateway/service/UserDetailsService.class
 vmware/services/gateway/exceptions/RuntimeBusinessException.class
 vmware/services/gateway/constatnts/EntityConstants.class
 vmware/services/gateway/response/Response.class

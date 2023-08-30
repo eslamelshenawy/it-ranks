@@ -18,11 +18,13 @@ import vmware.services.gateway.dto.LoginRequest;
 import vmware.services.gateway.entity.User;
 import vmware.services.gateway.exceptions.ErrorCodes;
 import vmware.services.gateway.exceptions.RuntimeBusinessException;
+import vmware.services.gateway.repository.UserRepository;
 import vmware.services.gateway.service.JWTTokenProvider;
 import vmware.services.gateway.service.UserService;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.springframework.http.HttpStatus.NOT_ACCEPTABLE;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
@@ -43,6 +45,8 @@ public class LoginController {
     private JWTTokenProvider jwtTokenProvider;
     @Autowired
     private DBClient dbClient;
+    @Autowired
+    private UserRepository userRepository;
 
     @PostMapping("/Login")
     public ResponseEntity signIn(@RequestBody LoginRequest loginRequest, @RequestHeader("Accept-Language") String lang) {
@@ -62,19 +66,31 @@ public class LoginController {
         log.info("user_id Created {}", user_id);
 
         if (user_id_long == 0) {
-
             log.info("RuntimeBusinessException {}", result);
             throw new RuntimeBusinessException(String.valueOf(result));
         }
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode(loginRequest.getPassword());
-        User u1 = new User();
-        u1.setId(user_id_long);
-        u1.setPassword(encodedPassword);
-        UserPrincipal user = new UserPrincipal(u1);
+        Optional<User> existingUser = userRepository.findByUserName(loginRequest.getUserName());
+        if (!existingUser.isPresent()) {
+            User u1 = new User();
+            u1.setId(user_id_long);
+            u1.setPassword(encodedPassword);
+            log.info("loginRequest.getUserName() before {}", loginRequest.getUserName());
+            u1.setUserName(loginRequest.getUserName());
+            log.info("loginRequest.getUserName() after {}", u1.getUserName());
 
-        String token = jwtTokenProvider.generateToken((UserPrincipal) user);
+            userRepository.save(u1);
+        }
+        User u1 = existingUser.get();
+        log.info("existingUser {}", u1);
+        UserPrincipal user = new UserPrincipal(u1);
+        user.setUserName(loginRequest.getUserName());
+        user.setPassword(encodedPassword);
+
+        log.info("UserPrincipal {}", user);
+        String token = jwtTokenProvider.generateToken(user);
         log.info("Token Created {}", token);
         Map<String, Object> employeeDataMap = new HashMap<>();
         employeeDataMap.put("employee", employeeDataObject);

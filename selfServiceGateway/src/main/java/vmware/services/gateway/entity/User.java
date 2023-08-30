@@ -17,10 +17,10 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @Column(name = "id", nullable = false, columnDefinition = "BIGINT AUTO_INCREMENT")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    @Column(name = "user_name")
+    private String userName;
     private String title;
     @Column(name = "jop_name")
     private String jopName;

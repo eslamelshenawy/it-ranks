@@ -1,5 +1,6 @@
 package vmware.services.gateway.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,8 +14,10 @@ import vmware.services.gateway.repository.UserRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+import java.util.Optional;
 
 @Component
+@Slf4j
 public class UserAuthDetailsService implements UserDetailsService {
 
     @Autowired
@@ -24,9 +27,12 @@ public class UserAuthDetailsService implements UserDetailsService {
 
     @Override
     public UserPrincipal loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(s)
-                .orElseThrow(() -> new UsernameNotFoundException("User name " + s + "Not Found in DB"));
-        return UserPrincipal.create(user);
+        log.info("s................................................ {}", s);
+
+        Optional<User> user = userRepository.findByUserName(s);
+        log.info("loadUserByUsername {}", user);
+
+        return UserPrincipal.create(user.get());
 
     }
 }
