@@ -69,7 +69,7 @@ kubectl exec -it mysql-76c6bf8f88-5kwhc /bin/bash
 mysql -h mysql -u root -p  # username root #password root
 ```
 ```bash
-show databases ;  # use javatechie // show tables;
+show databases ;  # use javatechie // show tables; // select * from users;
 ```
 
 ```bash

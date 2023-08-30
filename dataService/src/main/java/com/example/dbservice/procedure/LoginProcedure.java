@@ -73,17 +73,16 @@ public class LoginProcedure {
         alterSession(lang, id);
         final Employee[] employee = {null};
 
-        String sql = "SELECT DISP_NAME, D_TITLE, JOB_NAME, D_SEX, IMAGE FROM xxmob.xxx_mob_hr_emp_main_v WHERE person_id = ?";
+        String sql = "SELECT PERSON_ID,DISP_NAME, D_TITLE, JOB_NAME, D_SEX, IMAGE FROM xxmob.xxx_mob_hr_emp_main_v WHERE person_id = APPS.FND_GLOBAL.EMPLOYEE_ID";
         Session session = entityManager.unwrap(Session.class);
         session.doReturningWork(new ReturningWork<Void>() {
             @Override
             public Void execute(Connection connection) throws SQLException {
                 PreparedStatement statement = connection.prepareStatement(sql);
-                statement.setInt(1, id);
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
                         employee[0] = new Employee();
-                        employee[0].setId(id);
+                        employee[0].setId(resultSet.getInt("PERSON_ID"));
                         employee[0].setDISP_NAME(resultSet.getString("DISP_NAME"));
                         employee[0].setD_TITLE(resultSet.getString("D_TITLE"));
                         employee[0].setJOB_NAME(resultSet.getString("JOB_NAME"));

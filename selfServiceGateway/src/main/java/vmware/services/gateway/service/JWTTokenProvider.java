@@ -27,6 +27,7 @@ public class JWTTokenProvider implements Serializable {
 
     public String generateToken(UserPrincipal userPrincipal){
         Map<String, Object> claims = new HashMap<>();
+        log.info("userPrincipal.getUsername() {}", userPrincipal.getUsername());
         return doGenerateToken(claims, userPrincipal.getUsername());
     }
     private String doGenerateToken(Map<String, Object> claims, String subject) {
