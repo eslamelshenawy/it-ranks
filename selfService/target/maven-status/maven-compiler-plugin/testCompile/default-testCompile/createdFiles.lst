@@ -1,4 +1,4 @@
-vmware/services/gateway/web/OrganizationControllerTests.class
-vmware/services/gateway/OrganizationApplicationTest.class
-vmware/services/gateway/web/OrganizationControllerTests$1.class
-vmware/services/gateway/web/AbstractTestWithTempBaseDir.class
+vmware/services/gateway/web/LookupControllerTest$2.class
+vmware/services/gateway/SelfServiceApplicationTest.class
+vmware/services/gateway/web/LookupControllerTest$1.class
+vmware/services/gateway/web/LookupControllerTest.class

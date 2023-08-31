@@ -1,3 +1,2 @@
-/home/work/it-ranks/selfService/src/test/java/vmware/services/gateway/OrganizationApplicationTest.java
-/home/work/it-ranks/selfService/src/test/java/vmware/services/gateway/web/AbstractTestWithTempBaseDir.java
-/home/work/it-ranks/selfService/src/test/java/vmware/services/gateway/web/OrganizationControllerTests.java
+/home/work/it-ranks/selfService/src/test/java/vmware/services/gateway/web/LookupControllerTest.java
+/home/work/it-ranks/selfService/src/test/java/vmware/services/gateway/SelfServiceApplicationTest.java

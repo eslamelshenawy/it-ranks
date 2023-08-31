@@ -2,6 +2,7 @@ package com.example.dbservice.procedure;
 
 import com.example.dbservice.dto.LoginRequest;
 import com.example.dbservice.model.Employee;
+import com.example.dbservice.model.ServicesMenu;
 import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
 import org.hibernate.jdbc.ReturningWork;
@@ -95,6 +96,35 @@ public class LoginProcedure {
         });
 
         return employee[0];
+    }
+    public List<ServicesMenu> getServices(String lang, int id) {
+        alterSession(lang, id);
+        List<ServicesMenu> servicesMenuList = new ArrayList<>();
+
+        String sql = "select * from xxmob.XXX_MOB_MAIN_SERVICES_MENU ";
+        Session session = entityManager.unwrap(Session.class);
+        session.doReturningWork(new ReturningWork<Void>() {
+            @Override
+            public Void execute(Connection connection) throws SQLException {
+                PreparedStatement statement = connection.prepareStatement(sql);
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    while (resultSet.next()) {
+                        ServicesMenu servicesMenu = new ServicesMenu();
+                        servicesMenu.setSERV_ID(resultSet.getString("SERV_ID"));
+                        servicesMenu.setICON(resultSet.getString("ICON"));
+                        servicesMenu.setLABEL(resultSet.getString("LABEL"));
+                        servicesMenu.setENABLED(resultSet.getString("ENABLED"));
+                        servicesMenu.setTYPE(resultSet.getString("TYPE"));
+                        servicesMenu.setSECURITY_FORMULA(resultSet.getString("SECURITY_FORMULA"));
+                        servicesMenu.setSERV_COUNT(resultSet.getInt("SERV_COUNT"));
+                        servicesMenuList.add(servicesMenu);
+                    }
+                }
+                return null;
+            }
+        });
+
+        return servicesMenuList;
     }
 }
 
