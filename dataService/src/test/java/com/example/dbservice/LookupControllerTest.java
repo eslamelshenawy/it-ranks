@@ -69,7 +69,7 @@ public class LookupControllerTest {
         HttpEntity<?> request = getHttpEntity("null", "ARABIC");
         Integer pUserId = 1014804;
         String pParentIdValue = "XXX_OT_PARENT";
-        ResponseEntity<List<ServicesMenu>> res = template.exchange("/lookup/listServices/" + pUserId + "/" + pParentIdValue , GET, request, new ParameterizedTypeReference<List<ServicesMenu>>() {
+        ResponseEntity<List<ServicesMenu>> res = template.exchange("/lookup/listServices/" + pUserId + "?pParentId=" + pParentIdValue , GET, request, new ParameterizedTypeReference<List<ServicesMenu>>() {
         });
         List<ServicesMenu> servicesMenuList = res.getBody();
 

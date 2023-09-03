@@ -24,9 +24,10 @@ public class LookupController {
     public List<Language> getLanguages() {
         return lookupService.AllLanguage();
     }
-    @GetMapping(value ="/listServices/{pUserId}/{pParentId}")
-    public List<ServicesMenu> getServices(@RequestHeader("Accept-Language") String lang , @PathVariable Integer pUserId, @PathVariable(required = false) String pParentId){
-        return lookupService.getServices(lang,pUserId,pParentId);
+
+    @GetMapping(value = "/listServices/{pUserId}")
+    public List<ServicesMenu> getServices(@RequestHeader("Accept-Language") String lang, @PathVariable Integer pUserId, @RequestParam(required = false) String pParentId) {
+        return lookupService.getServices(lang, pUserId, pParentId);
     }
 
 }
