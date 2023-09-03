@@ -5,8 +5,6 @@ vmware/services/gateway/service/InvalidLoginAttemptHandler.class
 vmware/services/gateway/exceptions/RuntimeBusinessException.class
 vmware/services/gateway/constatnts/EntityConstants.class
 vmware/services/gateway/response/Response.class
-vmware/services/gateway/entity/Language.class
-vmware/services/gateway/controller/LookupController.class
 vmware/services/gateway/exceptions/BusinessException.class
 vmware/services/gateway/config/SpringdocConfig.class
 vmware/services/gateway/dto/SignupRequest.class
@@ -18,7 +16,6 @@ vmware/services/gateway/GatewayApplication.class
 vmware/services/gateway/util/Constant.class
 vmware/services/gateway/entity/User.class
 vmware/services/gateway/client/DBClient.class
-vmware/services/gateway/service/LookupService.class
 vmware/services/gateway/config/RibbonConfiguration.class
 vmware/services/gateway/service/JWTTokenProvider.class
 vmware/services/gateway/exceptions/ErrorCodes.class
@@ -34,6 +31,5 @@ vmware/services/gateway/exceptions/ErrorResponseDTO.class
 vmware/services/gateway/dto/LoginRequest.class
 vmware/services/gateway/service/UserAuthDetailsService.class
 vmware/services/gateway/dto/UserDto.class
-vmware/services/gateway/entity/Employee.class
 vmware/services/gateway/service/UserService.class
 vmware/services/gateway/config/auth/UserPrincipal.class

@@ -12,13 +12,10 @@
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/service/UserAuthDetailsService.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/exceptions/ErrorCodes.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/dto/LoginRequest.java
-/home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/controller/LookupController.java
-/home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/entity/Language.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/config/auth/UserPrincipal.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/service/UserService.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/config/auth/JwtAuthenticationResponse.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/config/RibbonConfiguration.java
-/home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/service/LookupService.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/GatewayApplication.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/exceptions/ErrorResponseHandler.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/controller/LoginController.java
@@ -28,7 +25,6 @@
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/api/GatewayApi.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/dto/UserDto.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/exceptions/ErrorResponseDTO.java
-/home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/entity/Employee.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/constatnts/EntityConstants.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/exceptions/RuntimeBusinessException.java
 /home/work/it-ranks/selfServiceGateway/src/main/java/vmware/services/gateway/service/JWTTokenProvider.java

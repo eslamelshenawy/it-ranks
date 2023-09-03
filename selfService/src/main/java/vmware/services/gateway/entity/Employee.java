@@ -5,24 +5,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "employee")
 @Entity
 public class Employee {
 
 	@Id
-	private Long id;
-	private String name;
-	private int age;
-	private String position;
+	private Integer id;
 
-	@ManyToOne
-	@JoinColumn(name="organizationId", nullable=false)
-	private Organization organization;
+	private String DISP_NAME;
+	private String D_TITLE;
+	private String JOB_NAME;
+	private String D_SEX;
+	@Lob
+	private byte[] IMAGE;
+
 
 }
