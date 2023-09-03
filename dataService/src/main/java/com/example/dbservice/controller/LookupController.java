@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/lookup")
@@ -23,9 +24,9 @@ public class LookupController {
     public List<Language> getLanguages() {
         return lookupService.AllLanguage();
     }
-    @GetMapping(value ="/listServices/{pUserId}")
-    public List<ServicesMenu> getServices(@RequestHeader("Accept-Language") String lang , @PathVariable Integer pUserId){
-        return lookupService.getServices(lang,pUserId);
+    @GetMapping(value ="/listServices/{pUserId}/{pParentId}")
+    public List<ServicesMenu> getServices(@RequestHeader("Accept-Language") String lang , @PathVariable Integer pUserId, @PathVariable(required = false) String pParentId){
+        return lookupService.getServices(lang,pUserId,pParentId);
     }
 
 }
