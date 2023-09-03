@@ -97,16 +97,26 @@ public class LoginProcedure {
 
         return employee[0];
     }
-    public List<ServicesMenu> getServices(String lang, int id) {
+
+
+    public List<ServicesMenu> getServices(String lang, int id, String pParentId) {
         alterSession(lang, id);
         List<ServicesMenu> servicesMenuList = new ArrayList<>();
 
-        String sql = "select * from xxmob.XXX_MOB_MAIN_SERVICES_MENU ";
+        String sql = "SELECT * FROM xxmob.XXX_MOB_MAIN_SERVICES_MENU";
+        if (pParentId != null) {
+            sql += " WHERE value = ?";
+        }
+
         Session session = entityManager.unwrap(Session.class);
+        String finalSql = sql;
         session.doReturningWork(new ReturningWork<Void>() {
             @Override
             public Void execute(Connection connection) throws SQLException {
-                PreparedStatement statement = connection.prepareStatement(sql);
+                PreparedStatement statement = connection.prepareStatement(finalSql);
+                if (pParentId != null) {
+                    statement.setString(1, pParentId);
+                }
                 try (ResultSet resultSet = statement.executeQuery()) {
                     while (resultSet.next()) {
                         ServicesMenu servicesMenu = new ServicesMenu();

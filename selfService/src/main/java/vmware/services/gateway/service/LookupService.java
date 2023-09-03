@@ -34,9 +34,9 @@ public class LookupService {
         return ResponseEntity.ok(response);
     }
 
-    public ResponseEntity<Response<List<ServicesMenu>>> getServices(String lang, Integer pUserId) {
+    public ResponseEntity<Response<List<ServicesMenu>>> getServices(String lang, Integer pUserId ,String pParentId) {
         LOGGER.info("Services ", ".......getServices");
-        List<ServicesMenu> services = dbClient.getServices(lang, pUserId);
+        List<ServicesMenu> services = dbClient.getServices(lang, pUserId ,pParentId);
         Response<List<ServicesMenu>> response = Response.<List<ServicesMenu>>builder().ResponseMessage("success").data(services).ResponseCode(200).build();
         return ResponseEntity.ok(response);
     }

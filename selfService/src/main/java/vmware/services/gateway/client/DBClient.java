@@ -23,9 +23,9 @@ public interface DBClient {
     List<Language> getLanguages();
 
     @GetMapping("/info/{pUserId}")
-    Employee getInfo(@RequestHeader("Accept-Language") String lang ,@PathVariable Integer pUserId);
+    Employee getInfo(@RequestHeader("Accept-Language") String lang, @PathVariable Integer pUserId);
 
-    @GetMapping("/lookup/listServices/{pUserId}")
-    List<ServicesMenu> getServices(@RequestHeader("Accept-Language") String lang , @PathVariable Integer pUserId);
+    @GetMapping("/lookup/listServices/{pUserId}/{pParentId}")
+    List<ServicesMenu> getServices(@RequestHeader("Accept-Language") String lang, @PathVariable Integer pUserId, String pParentId);
 
 }

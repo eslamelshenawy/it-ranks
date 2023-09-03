@@ -26,9 +26,9 @@ public class LookupService {
         return languages;
     }
 
-    public List<ServicesMenu> getServices(String lang, Integer pUserId) {
+    public List<ServicesMenu> getServices(String lang, Integer pUserId,String pParentId) {
         LOGGER.info("Services ", ".......getServices");
-        List<ServicesMenu> services = loginProcedure.getServices(lang, pUserId);
+        List<ServicesMenu> services = loginProcedure.getServices(lang, pUserId,pParentId);
         return services;
     }
 

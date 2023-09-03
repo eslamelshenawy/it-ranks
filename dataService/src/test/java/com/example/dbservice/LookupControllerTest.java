@@ -60,7 +60,21 @@ public class LookupControllerTest {
         List<ServicesMenu> servicesMenuList = res.getBody();
 
         assertEquals(HttpStatus.valueOf(200), res.getStatusCode());
-        assertEquals(3, servicesMenuList.size());
+        assertEquals(6, servicesMenuList.size());
+    }
+
+    @Test
+    public void getServicesWithParentIdTest() throws Exception {
+        SetSessionTest();
+        HttpEntity<?> request = getHttpEntity("null", "ARABIC");
+        Integer pUserId = 1014804;
+        String pParentIdValue = "XXX_OT_PARENT";
+        ResponseEntity<List<ServicesMenu>> res = template.exchange("/lookup/listServices/" + pUserId + "/" + pParentIdValue , GET, request, new ParameterizedTypeReference<List<ServicesMenu>>() {
+        });
+        List<ServicesMenu> servicesMenuList = res.getBody();
+
+        assertEquals(HttpStatus.valueOf(200), res.getStatusCode());
+        assertEquals(2, servicesMenuList.size());
     }
 
 }

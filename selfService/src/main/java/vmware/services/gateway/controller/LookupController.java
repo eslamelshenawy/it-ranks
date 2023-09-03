@@ -30,8 +30,8 @@ public class LookupController {
         return lookupService.getInfo(lang,pUserId);
     }
 
-    @GetMapping(value ="/listServices/{pUserId}")
-    public ResponseEntity<Response<List<ServicesMenu>>> getServices(@RequestHeader("Accept-Language") String lang , @PathVariable Integer pUserId){
-        return lookupService.getServices(lang,pUserId);
+    @GetMapping(value ="/listServices/{pUserId}/{pParentId}")
+    public ResponseEntity<Response<List<ServicesMenu>>> getServices(@RequestHeader("Accept-Language") String lang , @PathVariable Integer pUserId ,@PathVariable(required = false) String pParentId){
+        return lookupService.getServices(lang,pUserId ,pParentId);
     }
 }
