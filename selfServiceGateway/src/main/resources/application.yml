@@ -20,19 +20,3 @@ spring:
 jwt:
   secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
   expirationInMs: 86400000
-
-zuul:
-  sensitive-headers: Cookie,Set-Cookie
-  routes:
-    customerService:
-      path: /gateway/**
-      serviceId: gateway
-      stripPrefix: false
-    host:
-      socket-timeout-millis: 60000
-      time-to-live: -1
-      connect-timeout-millis: 5000
-      max-per-route-connections: 10000
-      max-total-connections: 5000
-  semaphore:
-    max-semaphores: 500
